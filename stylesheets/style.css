@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Festive&family=Supermercado+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;1,300;1,400;1,500;1,700;1,900&family=Smooch&display=swap");
+/*font-family: 'Bebas Neue', cursive;*/
+
+/*font-family: 'Festive', cursive;*/
+/*font-family: 'Roboto', sans-serif;*/
+/*font-family: 'Smooch', cursive;*/
+/*font-family: 'Supermercado One', cursive;*/
+:root {
+  --gris: #d9d9d9;
+  --orange: #ff5500;
+  --gris-footer: #b1b1b1;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: arial;
+  background-image: url("../images/circle-blues.png");
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+main {
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+/*HEADER*/
+a {
+  text-decoration: none;
+  color: var(--gris-footer);
+}
+a:hover {
+  color: var(--orange);
+}
+
+header,
+main,
+footer,
+canvas {
+  text-align: center;
+  border: solid 3px var(--gris);
+  border-radius: 5px;
+  width: 95%;
+}
+header {
+  margin: 2% auto;
+}
+header .titulo {
+  font-family: "Supermercado One", cursive;
+  color: white;
+  font-weight: bold;
+}
+header h2 {
+  font-family: "Festive", cursive;
+  font-family: "Roboto", sans-serif;
+  /*font-family: 'Smooch', cursive;*/
+  font-family: "Supermercado One", cursive;
+  color: var(--orange);
+  font-weight: bold;
+}
+
+/*Main*/
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+main .btn {
+  font-family: "Bebas Neue", cursive;
+  border: solid white 1px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 0.5em;
+}
+
+main .text-input {
+  font-family: Italic;
+  font-weight: bold;
+  border-radius: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 0.5em;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main canvas {
+  width: 60%;
+  /*border: solid 3px red;*/
+  border-radius: 5px;
+}
+main div {
+  text-align: center;
+}
+main div h3 {
+  width: 80%;
+  margin: 15px auto;
+  color: var(--orange);
+}
+main div #input-key-01, main div #input-key-02{
+/*font-family: "Bebas Neue", cursive;*/
+  letter-spacing:3px;
+  margin: 10px;
+}
+main div h3:last-child {
+  font-family: "Supermercado One", cursive;
+  font-weight: bold;
+  /*font-family: "Bebas Neue", cursive;*/
+}
+main .modal-content {
+  border: solid 3px var(--gris);
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+}
+main .modal-body {
+  color: var(--orange);
+  font-family: "Supermercado One", cursive;
+  font-weight: bold;
+  font-size: 20px;
+}
+main .modal-footer button {
+  background-color: #000064;
+}
+main {
+  background-image: url("../images/landscape-2028214.svg");
+
+  /*background-repeat: round;*/
+  /*background-position: center;*/
+  background-size: cover;
+}
+
+main .text #display-key {
+  letter-spacing: 10px;
+}
+.fa-circle-xmark {
+  color: red;
+}
+.fa-circle-check {
+  color: green;
+}
+
+footer {
+  text-align: center;
+  color: #fff;
+  color: var(--gris-footer);
+  margin: 2% auto;
+  margin-top: 20px;
+}
+footer p {
+  padding-top: 10px;
+}
+
+.feliz,
+.triste,
+.advertencia {
+  padding: 20px;
+}
+.feliz {
+  display: none;
+  color: #00ff40;
+}
+.triste {
+  display: none;
+  color: #ff4000;
+}
+.advertencia {
+  display: none;
+  color: #ffff00;
+}
+#modalBody{
+  font-size: 25px;
+
+}
+#modalBodyB {
+  font-family: "Supermercado One", cursive;
+  font-size: 25px;
+  color: white;
+  padding: 10px;
+}
+
+.modal-body2 {
+  font-size: 30px;
+  color: white;
+}
