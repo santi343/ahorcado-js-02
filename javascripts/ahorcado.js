@@ -171,19 +171,5 @@ botonNuevaPalabra.addEventListener("click", function (event) {
       aho.cargarModal("Palabra existente en la lista");
     }
   }
-  //clearInput(textBox);
 });
 
-const reiniciarJuego = () => {
-  document.querySelector("#display-key").innerHTML = "";
-  document.querySelector("#input-key-01").textContent = "";
-  document.querySelector("#input-key-02").textContent = "";
-  //contador = 9;
-  canvas.width = canvas.width;
-
-  /*
- * volver a verlo
-  const icono1 = document.createelement("i");
-  document.queryselector("#input-key-01").appendchild(icono1)
-  */
-};
