@@ -199,3 +199,7 @@ footer p {
   font-size: 30px;
   color: white;
 }
+#footer{
+  height: 0px;
+  /*display:none;*/
+}

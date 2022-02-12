@@ -1,7 +1,9 @@
 let palabraR;
+var partidaInicial = true;
 let contador = 1;
 const botonNuevaPalabra = document.getElementById("nueva-palabra");
 const iniciar_Juego = document.getElementById("iniciar-juego");
+let nuevaLetra = "";
 
 const aho = {
   cargarModal: function (texto) {
@@ -62,6 +64,7 @@ const aho = {
     if (!document.querySelector("#display-key").textContent.includes("_")) {
       this.cargarModal2(`"Ganaste, Felicidades" => ${palabraR}`, "feliz");
       this.reiniciarJuego();
+      contador == 10;
     }
   },
 
@@ -69,56 +72,78 @@ const aho = {
     return (text.value = "");
   },
   reiniciarJuego: function () {
+    partidaInicial = false;
     console.log(" Voy a reiniciar el juego");
     stringLetrasIngresadas = "";
-    contador = 1;
+    //contador = 1;
     console.log(stringLetrasIngresadas);
-    document.removeEventListener("keydown",this.juego(), true);
     document.querySelector("#display-key").innerHTML = "";
     document.querySelector("#input-key-01").textContent = "";
     document.querySelector("#input-key-02").textContent = "";
     canvas.width = canvas.width;
+    console.log("hola soy reicio");
+    document.removeEventListener("keydown", this.juego());
+
+    document.getElementById("iniciar-juego").focus();
+    nuevaLetra = "";
+    return;
   },
   iniciarJuego: function () {
-    //document.querySelector("#nueva-palabra").style.display = "none";
-    //document.querySelector("#input-nueva-palabra").style.display = "none";
-    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    document.querySelector("#nueva-palabra").style.display = "none";
+    document.querySelector("#input-nueva-palabra").style.display = "none";
+    console.log(" Voy a reiniciar el juego");
+    stringLetrasIngresadas = "";
+    contador = 1;
+    console.log(stringLetrasIngresadas);
+
+    document.querySelector("#display-key").innerHTML = "";
+    document.querySelector("#input-key-01").textContent = "";
+    document.querySelector("#input-key-02").textContent = "";
+    canvas.width = canvas.width;
+
     cvs.tablado(arrayColores[0]);
-    document.getElementById("display-key").focus();
+    document.getElementById("footer").focus();
     palabraR = this.palabraRandom();
     console.log(palabraR.split(""));
     this.rellenar(palabraR);
     this.juego();
   },
   juego: function () {
-    document.addEventListener("keydown", (event) => {
-      event.preventDefault();
-      let nuevaLetra = event.key.toUpperCase();
-      if (checkNuevaLetra(nuevaLetra)) {
-        if (!checkEstaContenida(nuevaLetra)) {
-          if (palabraR.includes(nuevaLetra)) {
-            this.agregarCorrecto(nuevaLetra);
-            this.mostrarCorrecto(nuevaLetra);
-            //GANASTE
-            //this.cargarModal2('"Felicidades"', "feliz");
+    if (partidaInicial) {
+      document.addEventListener("keydown", (event) => {
+        if (contador === 10) return;
+        event.preventDefault();
+        nuevaLetra = event.key.toUpperCase();
+        console.log(nuevaLetra);
+        if (checkNuevaLetra(nuevaLetra)) {
+          if (!checkEstaContenida(nuevaLetra)) {
+            if (palabraR.includes(nuevaLetra)) {
+              this.agregarCorrecto(nuevaLetra);
+              this.mostrarCorrecto(nuevaLetra);
+              event.preventDefault();
+              //GANASTE
+              //this.cargarModal2('"Felicidades"', "feliz");
+              return;
+            } else {
+              this.agregarIncorrecto(nuevaLetra);
+              dibujarCanva(contador, palabraR);
+              contador++;
+              return;
+            }
           } else {
-            this.agregarIncorrecto(nuevaLetra);
-            dibujarCanva(contador, palabraR);
-            contador++;
+            this.cargarModal2('"Letra ya ingresada"', "advertencia");
+            console.log("Todo Mal");
           }
         } else {
-          this.cargarModal2('"Letra ya ingresada"', "advertencia");
-          console.log("Todo Mal");
+          this.cargarModal2(`"Caracter No Valido"`, "advertencia");
+          console.log("MODAL A PONER");
         }
-      } else {
-        this.cargarModal2(`"Caracter No Valido"`, "advertencia");
-        console.log("MODAL A PONER");
-      }
 
-      const keyName = event.key.toUpperCase();
-      console.log(keyName);
-      //alert("keydown event\n\n" + "key: " + keyName);
-    });
+        const keyName = event.key.toUpperCase();
+        console.log(keyName);
+        //alert("keydown event\n\n" + "key: " + keyName);
+      });
+    }
   },
   palabraRandom: function () {
     return palabras[Math.floor(Math.random() * palabras.length)];
@@ -156,7 +181,6 @@ const aho = {
 iniciar_Juego.addEventListener("click", function (event) {
   event.preventDefault();
   aho.iniciarJuego();
-  //// ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
 botonNuevaPalabra.addEventListener("click", function (event) {
@@ -171,19 +195,4 @@ botonNuevaPalabra.addEventListener("click", function (event) {
       aho.cargarModal("Palabra existente en la lista");
     }
   }
-  //clearInput(textBox);
 });
-
-const reiniciarJuego = () => {
-  document.querySelector("#display-key").innerHTML = "";
-  document.querySelector("#input-key-01").textContent = "";
-  document.querySelector("#input-key-02").textContent = "";
-  //contador = 9;
-  canvas.width = canvas.width;
-
-  /*
- * volver a verlo
-  const icono1 = document.createelement("i");
-  document.queryselector("#input-key-01").appendchild(icono1)
-  */
-};

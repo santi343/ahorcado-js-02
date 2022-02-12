@@ -1,4 +1,4 @@
-let stringLetrasIngresadas = "";
+var stringLetrasIngresadas = "";
 // Validaciones de Nueva Palabra
 
 const checkNuevaPalabra = (text) => {
@@ -23,6 +23,11 @@ const checkNuevaLetra = (letra) =>
     /^([ABCDEFGHIJKLMÑNOPQRSTUVWXYZ]){0,1}$/.test(letra);
 
 const checkEstaContenida = (letra) => {
-    if (stringLetrasIngresadas.includes(letra)) return true;
-    stringLetrasIngresadas += letra;
+    if (stringLetrasIngresadas.includes(letra)) {
+        //alert(stringLetrasIngresadas)
+        return true;
+    } else {
+        stringLetrasIngresadas += letra;
+        return false;
+    }
 };
